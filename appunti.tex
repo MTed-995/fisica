@@ -1,0 +1,209 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\geometry{margin=2cm}
+
+\begin{document}
+
+\section*{Fondamenti di Cinematica e Dinamica}
+
+\subsection*{Definizione generale della cinematica}
+La cinematica è la branca della meccanica che si occupa di descrivere quantitativamente il moto dei corpi, determinando come varia la loro posizione in funzione del tempo, indipendentemente dalle cause (forze) che lo hanno generato o lo modificano. %
+
+\subsection*{Definizione di punto materiale}
+Il punto materiale è un modello fisico che rappresenta un corpo reale le cui dimensioni spaziali sono trascurabili rispetto alle distanze e alle dimensioni del sistema di riferimento in cui si muove. Tutta la massa del corpo è concentrata in questo singolo punto geometrico.
+
+\subsection*{Definizione di dinamica}
+La dinamica è la parte della meccanica che studia il moto dei corpi in relazione alle cause che lo determinano, ovvero le forze. Si basa sui principi di Newton e permette di prevedere l'evoluzione del moto conoscendo le interazioni fisiche a cui il corpo è sottoposto.
+
+\subsection*{Legge oraria e traiettoria}
+La \textbf{legge oraria} è la funzione vettoriale $\mathbf{r}(t)$ che descrive la posizione del punto materiale istante per istante in un dato sistema di riferimento. %
+La \textbf{traiettoria} è il luogo geometrico dei punti occupati consecutivamente dal punto in movimento al trascorrere del tempo. %
+Nello spazio tridimensionale, la legge oraria si esprime come:
+\begin{equation}
+\mathbf{r}(t) = x(t)\mathbf{u}_x + y(t)\mathbf{u}_y + z(t)\mathbf{u}_z
+\end{equation}
+
+\vspace{0.5cm}
+\begin{center}
+\begin{tikzpicture}
+    % Assi 3D
+    \draw[->, thick] (0,0,0) -- (4,0,0) node[right] {$x$};
+    \draw[->, thick] (0,0,0) -- (0,4,0) node[above] {$y$};
+    \draw[->, thick] (0,0,0) -- (0,0,4) node[below left] {$z$};
+    
+    % Curva nello spazio
+    \draw[thick, blue, ->] (0.5,0.5,3) .. controls (1.5,3,2) and (3,1,1) .. (3.5,3.5,0.5) node[right] {Traiettoria};
+    
+    % Punto P
+    \filldraw [red] (2.15, 2.1, 1.35) circle (2pt) node[above] {$P(t)$};
+    
+    % Raggio vettore
+    \draw[->, dashed, thick, red] (0,0,0) -- (2.15, 2.1, 1.35) node[midway, right] {$\mathbf{r}(t)$};
+\end{tikzpicture}
+\end{center}
+\vspace{0.5cm}
+
+\subsection*{Moto rettilineo: definizione generale}
+Il moto rettilineo è il moto di un punto materiale la cui traiettoria è limitata a una singola linea retta. Può essere descritto utilizzando un solo asse coordinato (ad esempio l'asse $x$).
+
+\subsection*{Velocità media nel moto rettilineo}
+La velocità media $v_m$ in un intervallo di tempo $\Delta t = t_2 - t_1$ è il rapporto tra lo spostamento $\Delta x$ effettuato dal punto e l'intervallo di tempo impiegato a percorrerlo: %
+\begin{equation}
+v_m = \frac{\Delta x}{\Delta t} = \frac{x_2 - x_1}{t_2 - t_1}
+\end{equation}
+
+\subsection*{Velocità istantanea}
+La velocità istantanea è il limite a cui tende la velocità media quando l'intervallo di tempo $\Delta t$ tende a zero. Matematicamente coincide con la derivata prima della funzione posizione rispetto al tempo: %
+\begin{equation}
+v(t) = \lim_{\Delta t \to 0} \frac{\Delta x}{\Delta t} = \frac{dx(t)}{dt} \tag{1.1}
+\end{equation}
+
+\subsection*{Moto rettilineo uniforme e calcoli}
+Un moto si dice rettilineo uniforme quando la traiettoria è una retta e la velocità si mantiene costante nel tempo ($v = costante$, e quindi $a = 0$). %
+
+\textbf{Differenza tra spostamento e spazio percorso:}
+Lo \textit{spostamento} ($\Delta x$) è una grandezza vettoriale (in 1D indicata col segno) dipendente solo dalle posizioni finale e iniziale. Lo \textit{spazio percorso} è una grandezza scalare sempre positiva, legata alla lunghezza effettiva della traiettoria percorsa, calcolabile come l'integrale del modulo della velocità: $s = \int |v| dt$. Se il moto non inverte il suo verso, i due concetti coincidono in modulo.
+
+\textbf{Ricavare la legge oraria tramite integrale:}
+Partendo dalla definizione differenziale della velocità $v = \frac{dx}{dt}$, si separano le variabili $dx = v \, dt$ e si integra ambo i membri tra l'istante iniziale $t_0$ (con posizione $x_0$) e un istante generico $t$:
+\begin{equation}
+\int_{x_0}^{x(t)} dx' = \int_{t_0}^{t} v \, dt'
+\end{equation}
+Svolgendo l'integrale a primo membro si ottiene lo spostamento $x(t) - x_0$. Poiché il moto è \textit{uniforme}, la velocità $v$ è una costante e può essere portata fuori dal segno di integrale:
+\begin{equation}
+x(t) - x_0 = v \int_{t_0}^{t} 1 \, dt' = v [t']_{t_0}^t = v(t - t_0)
+\end{equation}
+L'integrale "sparisce" lasciando posto al calcolo algebrico ordinario, da cui si ricava la legge oraria finale: %
+\begin{equation}
+x(t) = x_0 + v(t - t_0) \tag{1.4}
+\end{equation}
+
+\subsection*{Accelerazione nel moto rettilineo}
+L'accelerazione definisce la rapidità con cui la velocità cambia nel tempo. In un moto rettilineo, essa indica se il punto sta accelerando o frenando.
+
+\subsection*{Accelerazione istantanea}
+È la derivata prima della velocità rispetto al tempo, ovvero la derivata seconda della posizione: %
+\begin{equation}
+a(t) = \lim_{\Delta t \to 0} \frac{\Delta v}{\Delta t} = \frac{dv(t)}{dt} = \frac{d^2x(t)}{dt^2} \tag{1.6}
+\end{equation}
+
+\subsection*{Dall'accelerazione alla velocità}
+Come dalla velocità si calcola la posizione tramite integrazione, partendo dall'accelerazione si ottiene la variazione di velocità: %
+\begin{equation}
+dv = a(t) \, dt \quad \Rightarrow \quad \int_{v_0}^{v(t)} dv' = \int_{t_0}^{t} a(t') \, dt'
+\end{equation}
+Da cui:
+\begin{equation}
+v(t) = v_0 + \int_{t_0}^{t} a(t') \, dt' \tag{1.7}
+\end{equation}
+
+\subsection*{Moto rettilineo uniformemente accelerato}
+È un moto rettilineo in cui l'accelerazione si mantiene costante ($a = costante$). %
+Sostituendo un'accelerazione costante nell'integrale precedente si ricava la legge della velocità:
+\begin{equation}
+v(t) = v_0 + a(t - t_0)
+\end{equation}
+Integrando ancora una volta questa espressione per trovare la posizione:
+\begin{equation}
+x(t) = x_0 + \int_{t_0}^t [v_0 + a(t' - t_0)] \, dt' = x_0 + v_0(t - t_0) + \frac{1}{2}a(t - t_0)^2 \tag{1.8 e 1.10}
+\end{equation}
+
+\subsection*{Moto verticale nel campo di gravità}
+La caduta verticale di un corpo in prossimità della superficie terrestre, trascurando l'attrito dell'aria, è un perfetto esempio di moto rettilineo uniformemente accelerato. %
+
+\textbf{L'accelerazione di gravità} è un'accelerazione vettoriale diretta verso il centro della Terra, indicata con $\mathbf{g}$, il cui valore medio è $g = 9.81 \, \text{m/s}^2$. Fissando l'asse $y$ rivolto verso l'alto, le equazioni (con $t_0=0$) diventano:
+\begin{equation}
+v_y(t) = v_{0y} - gt \quad \text{e} \quad y(t) = y_0 + v_{0y}t - \frac{1}{2}gt^2
+\end{equation}
+
+\textbf{Esempio:} Un corpo lanciato verso l'alto con velocità $v_0 = 10 \, \text{m/s}$ da quota $y_0 = 0$.
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        width=7cm, height=5cm,
+        axis lines=left,
+        xlabel={$t$ (s)}, ylabel={$y$ (m)},
+        title={Posizione (Parabola)},
+        domain=0:2.04, samples=100]
+        \addplot[blue, thick] {10*x - 4.9*x^2};
+    \end{axis}
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}
+    \begin{axis}[
+        width=7cm, height=5cm,
+        axis lines=middle,
+        xlabel={$t$ (s)}, ylabel={$v$ (m/s)},
+        title={Velocità (Retta)},
+        domain=0:2.04, samples=10]
+        \addplot[red, thick] {10 - 9.8*x};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\subsection*{Moto armonico semplice}
+Il moto armonico semplice descrive l'oscillazione periodica di un corpo attorno a una posizione di equilibrio. La sua legge oraria è una funzione sinusoidale: %
+\begin{equation}
+x(t) = A \operatorname{sen}(\omega t + \phi) \tag{1.11}
+\end{equation}
+
+\textbf{Definizioni:}
+\begin{itemize}
+    \item \textbf{Ampiezza ($A$):} Il massimo spostamento (modulo) dalla posizione di equilibrio. È sempre positiva e si misura in metri.
+    \item \textbf{Fase ($\omega t + \phi$):} L'argomento della funzione trigonometrica. Identifica in quale punto dell'oscillazione si trova il corpo al tempo $t$.
+    \item \textbf{Fase iniziale ($\phi$):} Il valore della fase all'istante $t=0$, determina da dove parte l'oscillazione.
+    \item \textbf{Pulsazione ($\omega$):} Indica la "velocità angolare" dell'oscillazione, misurata in rad/s.
+\end{itemize}
+
+\textbf{Periodo ($T$):} È l'intervallo di tempo necessario affinché si compia un'oscillazione completa (quando la fase aumenta di $2\pi$).
+\begin{equation}
+T = \frac{2\pi}{\omega}
+\end{equation}
+\textbf{Frequenza ($\nu$):} È il numero di oscillazioni compiute in un secondo (in Hertz, Hz). %
+\begin{equation}
+\nu = \frac{1}{T} = \frac{\omega}{2\pi}
+\end{equation}
+
+\subsection*{Equazione differenziale del moto armonico}
+Derivando due volte la legge oraria si ottiene:
+\begin{equation*}
+v(t) = \frac{dx}{dt} = A\omega \cos(\omega t + \phi)
+\end{equation*}
+\begin{equation*}
+a(t) = \frac{d^2x}{dt^2} = -A\omega^2 \operatorname{sen}(\omega t + \phi) = -\omega^2 x(t)
+\end{equation*}
+Portando tutto a primo membro si ricava l'equazione differenziale che governa questo moto (secondo ordine, lineare, omogenea): %
+\begin{equation}
+\frac{d^2x}{dt^2} + \omega^2x = 0 \tag{1.15}
+\end{equation}
+Ogni sistema fisico in cui agisce una forza di richiamo proporzionale allo spostamento (come la forza elastica di una molla, $F = -kx$) obbedisce a questa equazione, dove $\omega = \sqrt{k/m}$.
+
+\textbf{Esempio di calcolo:} Sistema massa-molla con $A=2$ cm, periodo $T=4$ s, e il corpo parte dal centro verso ascisse positive a $t=0$ ($\phi=0$).
+Pulsazione: $\omega = 2\pi / 4 = \frac{\pi}{2} \approx 1.57 \, \text{rad/s}$. Legge oraria: $x(t) = 2 \operatorname{sen}\left(\frac{\pi}{2}t\right)$.
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        width=12cm, height=6cm,
+        axis lines=middle,
+        xlabel={$t$ (s)}, ylabel={$x(t)$ (cm)},
+        title={Oscillazione Massa-Molla},
+        domain=0:8, samples=150,
+        xtick={0, 1, 2, 3, 4, 5, 6, 7, 8},
+        ytick={-2, 2}]
+        \addplot[green!60!black, thick] {2*sin(deg(pi/2 * x))};
+        \node[above] at (axis cs:1,2) {Max $A$};
+        \node[below] at (axis cs:3,-2) {Min $-A$};
+        \draw[<->, dashed] (axis cs:0, 1.5) -- (axis cs:4, 1.5) node[midway, above] {Periodo $T$};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\end{document}
