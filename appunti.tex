@@ -206,4 +206,310 @@ Pulsazione: $\omega = 2\pi / 4 = \frac{\pi}{2} \approx 1.57 \, \text{rad/s}$. Le
 \end{tikzpicture}
 \end{center}
 
+% --- NUOVA SEZIONE: MOTO NEL PIANO E NELLO SPAZIO ---
+\newpage
+\section*{Moto nel Piano e nello Spazio}
+
+\subsection*{Moto nel piano: definizione}
+Il moto nel piano è il movimento di un punto materiale la cui traiettoria è interamente contenuta all'interno di un piano bidimensionale. Per descriverlo, sono sufficienti due assi coordinati (solitamente $x$ e $y$).
+
+\subsection*{Grandezze vettoriali del moto nel piano}
+In due dimensioni, le grandezze cinematiche fondamentali non sono più semplici scalari, ma vettori:
+\begin{itemize}
+    \item \textbf{Posizione:} Indicata dal raggio vettore $\mathbf{r}(t)$.
+    \item \textbf{Spostamento:} La variazione di posizione $\Delta\mathbf{r} = \mathbf{r}(t_2) - \mathbf{r}(t_1)$.
+    \item \textbf{Velocità ($\mathbf{v}$):} La rapidità di variazione del raggio vettore.
+    \item \textbf{Accelerazione ($\mathbf{a}$):} La rapidità di variazione del vettore velocità.
+\end{itemize}
+
+\subsection*{Raggio vettore}
+Il raggio vettore $\mathbf{r}(t)$ individua la posizione del punto materiale $P$ rispetto all'origine $O$ del sistema di riferimento. Si esprime come:
+\begin{equation}
+\mathbf{r}(t) = x(t)\mathbf{u}_x + y(t)\mathbf{u}_y
+\end{equation}
+dove $\mathbf{u}_x$ e $\mathbf{u}_y$ sono i versori degli assi.
+
+\subsection*{Velocità vettoriale}
+La velocità vettoriale istantanea è definita come la derivata del raggio vettore rispetto al tempo. Essa è \textbf{sempre tangente alla traiettoria} nel punto in cui si trova il corpo.
+\begin{equation}
+\mathbf{v}(t) = \lim_{\Delta t \to 0} \frac{\Delta\mathbf{r}}{\Delta t} = \frac{d\mathbf{r}(t)}{dt}
+\end{equation}
+
+\vspace{0.3cm}
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+    \draw[->, thick] (0,0) -- (4,0) node[right] {$x$};
+    \draw[->, thick] (0,0) -- (0,3) node[above] {$y$};
+    \draw[thick, blue] (0.5, 0.5) .. controls (1.5, 2.5) and (3, 1) .. (3.8, 2) node[right] {Traiettoria};
+    \filldraw[red] (1.8, 1.85) circle (1.5pt) node[above left] {$P$};
+    \draw[->, dashed, thick] (0,0) -- (1.8, 1.85) node[midway, left] {$\mathbf{r}$};
+    \draw[->, thick, green!60!black] (1.8, 1.85) -- (2.6, 1.3) node[right] {$\mathbf{v}$ (tangente)};
+\end{tikzpicture}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{Componenti cartesiane della velocità vettoriale}
+Derivando il raggio vettore, le componenti della velocità corrispondono alle derivate delle coordinate:
+\begin{equation}
+\mathbf{v}(t) = \frac{dx(t)}{dt}\mathbf{u}_x + \frac{dy(t)}{dt}\mathbf{u}_y = v_x\mathbf{u}_x + v_y\mathbf{u}_y
+\end{equation}
+
+\subsection*{Componenti polari della velocità vettoriale}
+In coordinate polari $(r, \theta)$, le relazioni di conversione sono $x = r\cos\theta$ e $y = r\operatorname{sen}\theta$. La velocità assume una forma diversa.
+
+\subsection*{Velocità radiale e trasversa}
+Scomponendo la velocità vettoriale lungo la direzione del raggio ($\mathbf{u}_r$) e la direzione perpendicolare ad esso ($\mathbf{u}_\theta$), si ottengono la \textbf{velocità radiale} ($v_r$) e la \textbf{velocità trasversa} ($v_\theta$):
+\begin{equation}
+\mathbf{v}(t) = \frac{dr}{dt}\mathbf{u}_r + r\frac{d\theta}{dt}\mathbf{u}_\theta = v_r\mathbf{u}_r + v_\theta\mathbf{u}_\theta
+\end{equation}
+
+\vspace{0.3cm}
+\begin{center}
+\begin{tikzpicture}
+    \draw[->, thick] (0,0) -- (3,0) node[right] {$x$};
+    \draw[->, thick] (0,0) -- (0,3) node[above] {$y$};
+    \draw[->, thick, blue] (0,0) -- (2, 1.5) node[midway, above left] {$r$};
+    \filldraw (2, 1.5) circle (1.5pt) node[below right] {$P$};
+    \draw[->, thick, red] (2, 1.5) -- (2.8, 2.1) node[right] {$v_r \mathbf{u}_r$};
+    \draw[->, thick, orange] (2, 1.5) -- (1.4, 2.3) node[above] {$v_\theta \mathbf{u}_\theta$};
+    \draw[->, thick, green!60!black] (2, 1.5) -- (2.2, 2.9) node[above right] {$\mathbf{v}$ totale};
+    \draw[dashed] (2.8, 2.1) -- (2.2, 2.9);
+    \draw[dashed] (1.4, 2.3) -- (2.2, 2.9);
+    \draw[->] (1,0) arc (0:36.87:1) node[midway, right] {$\theta$};
+\end{tikzpicture}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{Equazione oraria dello spostamento nel piano}
+Conoscendo la funzione velocità vettoriale $\mathbf{v}(t)$ e la posizione iniziale $\mathbf{r}_0$ al tempo $t_0$, la posizione al tempo $t$ si ricava integrando la velocità. L'integrale di un vettore si esegue componente per componente:
+\begin{equation}
+\mathbf{r}(t) = \mathbf{r}_0 + \int_{t_0}^{t} \mathbf{v}(t') dt' = \left( x_0 + \int_{t_0}^t v_x dt' \right)\mathbf{u}_x + \left( y_0 + \int_{t_0}^t v_y dt' \right)\mathbf{u}_y
+\end{equation}
+
+\subsection*{Accelerazione vettoriale nel moto piano}
+L'accelerazione vettoriale è la derivata prima della velocità vettoriale e la derivata seconda della posizione vettoriale. Indica come cambia la velocità sia in modulo che in direzione.
+\begin{equation}
+\mathbf{a}(t) = \frac{d\mathbf{v}(t)}{dt} = \frac{d^2\mathbf{r}(t)}{dt^2}
+\end{equation}
+
+\vspace{0.3cm}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+    \draw[thick, blue] (0, 0) .. controls (2, 1) and (4, 3) .. (5, 1) node[right] {Traiettoria};
+    \filldraw[red] (2.4, 1.6) circle (1.5pt);
+    \draw[->, thick, green!60!black] (2.4, 1.6) -- (3.5, 2.5) node[right] {$\mathbf{v}$};
+    \draw[->, thick, purple] (2.4, 1.6) -- (3, 0.5) node[right] {$\mathbf{a}$ (incurvata verso la concavità)};
+\end{tikzpicture}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{Accelerazione tangenziale e centripeta}
+Proiettando l'accelerazione sul sistema di riferimento intrinseco (tangente $\mathbf{u}_T$ e normale $\mathbf{u}_N$ alla traiettoria), essa si scompone in:
+\begin{itemize}
+    \item \textbf{Accelerazione tangenziale ($a_T$):} Cambia il \textit{modulo} della velocità. Vale $a_T = dv/dt$.
+    \item \textbf{Accelerazione normale o centripeta ($a_N$):} Cambia la \textit{direzione} della velocità. È diretta verso il centro di curvatura e vale $a_N = v^2/R$, con $R$ raggio di curvatura osculatore.
+\end{itemize}
+\begin{equation}
+\mathbf{a}(t) = \frac{dv}{dt}\mathbf{u}_T + \frac{v^2}{R}\mathbf{u}_N = \mathbf{a}_T + \mathbf{a}_N
+\end{equation}
+
+\vspace{0.3cm}
+\begin{center}
+\begin{tikzpicture}
+    \draw[thick, blue] (0, 0) arc (180:90:3);
+    \filldraw (0.87, 2.87) circle (1.5pt); % approx point on curve
+    \draw[->, thick, green!60!black] (0.87, 2.87) -- (2.5, 3.4) node[above] {$\mathbf{a}_T$};
+    \draw[->, thick, red] (0.87, 2.87) -- (1.4, 1.2) node[right] {$\mathbf{a}_N$};
+    \draw[->, thick, purple] (0.87, 2.87) -- (3.03, 1.73) node[right] {$\mathbf{a}_{tot}$};
+    \draw[dashed] (2.5, 3.4) -- (3.03, 1.73);
+    \draw[dashed] (1.4, 1.2) -- (3.03, 1.73);
+\end{tikzpicture}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{Componenti cartesiane dell'accelerazione}
+Come per la velocità, derivando le componenti cartesiane:
+\begin{equation}
+\mathbf{a}(t) = \frac{d^2x(t)}{dt^2}\mathbf{u}_x + \frac{d^2y(t)}{dt^2}\mathbf{u}_y = a_x\mathbf{u}_x + a_y\mathbf{u}_y
+\end{equation}
+
+\subsection*{Componenti polari dell'accelerazione}
+In coordinate polari, la derivazione è più complessa perché i versori $\mathbf{u}_r$ e $\mathbf{u}_\theta$ ruotano col punto. Si ottiene:
+\begin{equation}
+\mathbf{a}(t) = (\ddot{r} - r\dot{\theta}^2)\mathbf{u}_r + (r\ddot{\theta} + 2\dot{r}\dot{\theta})\mathbf{u}_\theta
+\end{equation}
+(Il termine $r\dot{\theta}^2$ è l'accelerazione centripeta, $2\dot{r}\dot{\theta}$ è l'accelerazione di Coriolis nel sistema rotante).
+
+\subsection*{Equazione oraria della velocità vettoriale}
+Analogamente alla posizione, conoscendo l'accelerazione $\mathbf{a}(t)$ e la velocità iniziale $\mathbf{v}_0$ al tempo $t_0$, la velocità vettoriale ad un istante $t$ si ottiene tramite integrale:
+\begin{equation}
+\mathbf{v}(t) = \mathbf{v}_0 + \int_{t_0}^{t} \mathbf{a}(t') dt'
+\end{equation}
+
+\subsection*{Moto circolare}
+Il moto circolare è il moto di un punto materiale la cui traiettoria è una circonferenza di raggio costante $R$.
+
+\vspace{0.3cm}
+\begin{center}
+\begin{tikzpicture}
+    \draw[thick, blue] (0,0) circle (2);
+    \filldraw (0,0) circle (1pt) node[below] {$O$};
+    \draw[->, thick] (0,0) -- (1.414, 1.414) node[midway, above left] {$R$};
+    \filldraw (1.414, 1.414) circle (1.5pt) node[right] {$P$};
+    \draw[->, thick, green!60!black] (1.414, 1.414) -- (0, 2.828) node[above] {$\mathbf{v}$};
+    \draw[dashed] (0,0) -- (2,0);
+    \draw[->] (0.8, 0) arc (0:45:0.8) node[midway, right] {$\theta$};
+\end{tikzpicture}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{Velocità angolare}
+La velocità angolare ($\omega$) descrive la rapidità con cui viene spazzato l'angolo $\theta$ nel tempo. Si misura in radianti al secondo (rad/s).
+\begin{equation}
+\omega = \frac{d\theta}{dt} \quad \text{e} \quad v = \omega R
+\end{equation}
+
+\subsection*{Moto circolare uniforme}
+Se $\omega$ è costante, il modulo della velocità $v$ è costante. In questo caso l'accelerazione tangenziale è nulla ($a_T = 0$), e l'unica accelerazione presente è quella centripeta:
+\begin{equation}
+\theta(t) = \theta_0 + \omega t \quad \text{e} \quad a = a_N = \frac{v^2}{R} = \omega^2 R
+\end{equation}
+
+\subsection*{Accelerazione angolare istantanea}
+Se la velocità angolare varia, definiamo l'accelerazione angolare istantanea $\alpha$ (in rad/s$^2$):
+\begin{equation}
+\alpha = \frac{d\omega}{dt} = \frac{d^2\theta}{dt^2}
+\end{equation}
+Da questa, procedendo per integrazione:
+\begin{equation}
+\omega(t) = \omega_0 + \int_{t_0}^t \alpha(t') dt' \quad \text{e} \quad \theta(t) = \theta_0 + \int_{t_0}^t \omega(t') dt'
+\end{equation}
+
+\subsection*{Moto circolare uniformemente accelerato}
+Quando $\alpha$ è costante, le equazioni angolari sono del tutto analoghe a quelle del moto rettilineo uniformemente accelerato:
+\begin{equation}
+\begin{cases}
+\alpha = \text{costante} \\
+\omega(t) = \omega_0 + \alpha t \\
+\theta(t) = \theta_0 + \omega_0 t + \frac{1}{2}\alpha t^2
+\end{cases}
+\end{equation}
+
+\subsection*{Notazione vettoriale e vettore velocità angolare}
+Nei moti rotazionali è utile definire il \textbf{vettore velocità angolare} $\boldsymbol{\omega}$. Il suo modulo è $\omega$, la direzione è perpendicolare al piano dell'orbita (data dalla regola della mano destra) e il verso indica il senso di rotazione (uscente per moto antiorario). Le relazioni scalari diventano prodotti vettoriali:
+\begin{equation}
+\mathbf{v} = \boldsymbol{\omega} \times \mathbf{r} \quad \text{e} \quad \mathbf{a} = \boldsymbol{\alpha} \times \mathbf{r} + \boldsymbol{\omega} \times \mathbf{v}
+\end{equation}
+
+\vspace{0.3cm}
+\begin{center}
+\begin{tikzpicture}
+    % Ellipse for 3D circle feel
+    \draw[thick, blue] (0,0) ellipse (2cm and 0.6cm);
+    \draw[->, thick, purple] (0,0) -- (0, 2) node[right] {$\boldsymbol{\omega}$ (Asse di rotazione)};
+    \draw[->, thick] (0,0) -- (1.5, -0.4) node[midway, below] {$\mathbf{r}$};
+    \filldraw (1.5, -0.4) circle (1.5pt);
+    \draw[->, thick, green!60!black] (1.5, -0.4) -- (1.5, -1.2) node[right] {$\mathbf{v} = \boldsymbol{\omega} \times \mathbf{r}$};
+\end{tikzpicture}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{Moto di precessione}
+Quando il vettore velocità angolare $\boldsymbol{\omega}$ non ha una direzione fissa ma l'asse di rotazione stesso ruota (descrivendo un cono) con una velocità angolare di precessione $\boldsymbol{\Omega}$, si ha un moto di precessione. L'equazione che governa la variazione di $\boldsymbol{\omega}$ nel tempo è:
+\begin{equation}
+\frac{d\boldsymbol{\omega}}{dt} = \boldsymbol{\Omega} \times \boldsymbol{\omega}
+\end{equation}
+
+\vspace{0.3cm}
+\begin{center}
+\begin{tikzpicture}
+    \draw[dashed] (0,0) ellipse (1.5cm and 0.4cm);
+    \draw[->, thick] (0,-2) -- (0,1) node[left] {$\boldsymbol{\Omega}$ (Asse fisso)};
+    \draw[->, thick, purple] (0,-2) -- (1.06, 0.28) node[right] {$\boldsymbol{\omega}$ (Asse rotante)};
+    \draw[dashed, blue] (0,-2) -- (-1.06, 0.28);
+    \draw[dashed, blue] (0,-2) -- (0, 0.4);
+    \node at (0.5, -1) {Cono di precessione};
+\end{tikzpicture}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{Moto parabolico}
+Il moto del proiettile è la sovrapposizione di due moti indipendenti: un moto rettilineo uniforme orizzontale e un moto uniformemente accelerato verticale (caduta libera per gravità $\mathbf{g}$). Fissando $\theta_0$ come angolo di lancio e $v_0$ come velocità iniziale:
+\begin{equation}
+\begin{cases}
+x(t) = (v_0 \cos\theta_0) t \\
+y(t) = (v_0 \operatorname{sen}\theta_0) t - \frac{1}{2}gt^2
+\end{cases}
+\end{equation}
+
+\textbf{Esempio pratico:} Un cannone spara un proiettile da terra ($x_0=0, y_0=0$) a 30° con velocità 20 m/s. Lungo x procederà a velocità costante $\sim 17.3$ m/s, mentre salirà decelerando a $-9.8$ m/s$^2$ per poi ricadere tracciando una parabola.
+
+\vspace{0.3cm}
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        width=8cm, height=5cm,
+        axis lines=left,
+        xlabel={$x$ (m)}, ylabel={$y$ (m)},
+        title={Traiettoria Parabolica},
+        domain=0:4, samples=100]
+        \addplot[blue, thick] {1.73*x - 0.49*x^2};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{Moto nello spazio}
+Quando il moto non è vincolato né a una retta né a un piano, la traiettoria si sviluppa nello spazio tridimensionale ($\mathbb{R}^3$). È necessario l'uso completo dei tre versori cartesiani.
+\begin{equation}
+\mathbf{r}(t) = x(t)\mathbf{u}_x + y(t)\mathbf{u}_y + z(t)\mathbf{u}_z
+\end{equation}
+Le equazioni vettoriali (velocità, accelerazione, integrazioni) restano formalmente identiche al caso piano, aggiungendo semplicemente la terza componente sull'asse $z$.
+
+\vspace{0.3cm}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+    \draw[->, thick] (0,0,0) -- (3,0,0) node[right] {$y$};
+    \draw[->, thick] (0,0,0) -- (0,3,0) node[above] {$z$};
+    \draw[->, thick] (0,0,0) -- (0,0,4) node[below left] {$x$};
+    \draw[thick, blue, ->] (1,0,3) .. controls (2,1,2) and (1,2,1) .. (2,2.5,0) node[right] {Curva 3D};
+\end{tikzpicture}
+\end{center}
+\vspace{0.3cm}
+
+% --- CONCLUSIONI TRASCRITTE DALLE IMMAGINI ---
+\newpage
+\section*{1.13 Considerazioni conclusive}
+
+Ripercorriamo gli argomenti presentati nel capitolo per mettere in evidenza i concetti più importanti e le procedure più significative.
+
+Lo scopo iniziale del nostro studio della meccanica è di fissare il quadro della descrizione cinematica del moto di un punto precisando quali sono le grandezze fondamentali e come sono legate tra loro; per sviluppare questo programma risultano subito necessari strumenti forniti dall'analisi matematica e dal calcolo vettoriale.
+
+Elenchiamo in maniera schematica i punti salienti.
+
+\begin{itemize}
+    \item La descrizione del moto consiste nel \textbf{determinare come varia la posizione del punto in funzione del tempo}, ossia la \textbf{legge oraria}; se conosciamo la posizione ad un certo istante possiamo sapere come si sviluppa il moto se abbiamo la direzione istantanea del moto e la rapidità con cui avviene lo spostamento: ciò porta al concetto di \textbf{velocità} $\mathbf{v}$ e possiamo concepire il moto come una successione di spostamenti infinitesimi $d\mathbf{r} = \mathbf{v} \, dt$.
+    
+    \item La velocità a sua volta può cambiare durante il moto e le sue variazioni sono espresse dall'\textbf{accelerazione}: $d\mathbf{v} = \mathbf{a} \, dt$.
+    
+    \item La \textbf{traiettoria} è il luogo dei punti occupati in funzione del tempo dalla punta del vettore $\mathbf{r}(t)$: questo dà la posizione del punto, ma non la direzione del moto espressa, come detto sopra, da $d\mathbf{r}$ e quindi da $\mathbf{v}$.
+    
+    \item La velocità $\mathbf{v}$ è dunque sempre \textbf{tangente alla traiettoria}; l'accelerazione in generale \textbf{non è parallela alla velocità}. La componente di $\mathbf{a}$ ortogonale a $\mathbf{v}$ descrive le variazioni della direzione del moto e non ha alcun legame con le variazioni del modulo di $\mathbf{v}$. Nel moto curvilineo c'è sempre una componente dell'accelerazione ortogonale alla traiettoria, nel moto rettilineo questa componente è sempre nulla.
+    
+    \item Da $\mathbf{r}(t)$ si passa a $\mathbf{v}(t)$ e ad $\mathbf{a}(t)$ derivando rispetto al tempo; se invece è data $\mathbf{a}(t)$ il passaggio inverso si fa integrando ed è essenziale la conoscenza delle condizioni iniziali.
+    
+    \item \textbf{Le grandezze cinematiche che caratterizzano il moto di un punto materiale sono dunque posizione, velocità, accelerazione} e sono legate tra loro da operazioni di derivazione e di integrazione, conseguenza del fatto che lo studio dell'evoluzione del moto comporta il concetto di variazione che è espresso matematicamente dall'operazione di derivazione.
+    
+    \item $\mathbf{r}$, $\mathbf{v}$, $\mathbf{a}$ \textbf{sono grandezze vettoriali}: nella loro definizione oltre ad un numero bisogna dare una direzione e un verso; pertanto le variazioni di posizione e di velocità sono espresse completamente solo se si tiene conto sia della variazione del modulo che della variazione della direzione.
+    
+    \item È necessario specificare sempre in quale sistema di riferimento si descrive il moto: le coordinate del punto $\mathbf{r}$, le componenti di $\mathbf{v}$ e $\mathbf{a}$, l'espressione analitica della traiettoria dipendono dal sistema di riferimento. Però le \textbf{relazioni più generali tra le grandezze cinematiche sono relazioni vettoriali e in quanto tali sono invarianti rispetto alla scelta del sistema di riferimento}, cioè valgono in qualsiasi sistema di riferimento. Quindi, se $\mathbf{b} = \mathbf{c}$, questo comporta sempre che $b_x = c_x, b_y = c_y, b_z = c_z$, ma i valori $(b_x, b_y, b_z)$ e $(c_x, c_y, c_z)$ cambiano col sistema di riferimento.
+\end{itemize}
+
+Questo è il quadro generale. Si vede così che parallelamente all'introduzione delle grandezze fisiche citate abbiamo dovuto richiamare i concetti matematici che ne permettono la spiegazione. Per non appesantire la trattazione i richiami matematici sono contenuti nelle Appendici A e C che vanno lette e studiate adesso e saranno utilizzate per tutto il resto del volume.
+
+Gli argomenti esposti sono stati chiariti con vari esempi; tra questi rivestono particolare importanza il \textbf{moto armonico semplice} e il \textbf{moto circolare} che ritroveremo rispettivamente nello studio dei fenomeni di oscillazione e di rotazione. Sempre a scopo di chiarezza e di semplicità abbiamo iniziato lo studio dal moto rettilineo, che in realtà è un caso abbastanza particolare; a parte l'utilità didattica, la sua conoscenza è essenziale nello studio della composizione di moti.
+
+Infine vogliamo attirare l'attenzione su un argomento di carattere diverso dai precedenti. Se da una parte la cinematica ha una struttura analitica che permette di calcolare le caratteristiche del moto, dall'altra alla base del calcolo devono esserci state delle misure che, tanto per fissare due estremi, o hanno permesso di determinare $\mathbf{r}(t)$ oppure hanno fornito $\mathbf{a}(t)$ e le condizioni iniziali. La procedura di misura produce dei valori numerici (con un certo errore) ai quali bisogna associare una unità di misura. Per questa ragione ogni qual volta introduciamo nuove grandezze diciamo subito in che unità di misura vanno espresse. Il quadro completo delle grandezze e delle relative unità si trova in Appendice B.
+
+
 \end{document}
